@@ -1,17 +1,27 @@
 version: 2.1
 
-jobs:
-  circle-ci-hello:
-    docker:
-      - image: cimg/node:17.2.0 # the primary container, where your job's commands are run
-        auth:
-          username: mydockerhub-user
-          password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
-    steps:
-      - checkout # check out the code in the project directory
-      - run: echo "Test again" # run the `echo` command
+orbs:
+  aws-ecr: circleci/aws-ecr@8.2.1
 
 workflows:
   my-workflow:
     jobs:
-      - circle-ci-hello
+      - build_and_push:
+          context:
+            - test
+     
+
+  jobs:
+    build_and_push: 
+     # account-url: AWS_ECR_ACCOUNT_URL_ENV_VAR_NAME
+      aws-access-key-id: ${ACCESS_KEY_ID}
+      aws-secret-access-key: ${SECRET_ACCESS_KEY}
+      # context: myContext
+      # create-repo: true
+      dockerfile: Dockerfile
+      path: .
+      # profile-name: myProfileName
+      region: ${AWS_REGION}
+      repo: ${ECR_repository}
+      tag: 'latest, $CIRCLE_SHA1'
+    
