@@ -4,7 +4,7 @@ ENV PYTHONDONTWRITEBYTECODE 1
 WORKDIR /src/app/
 COPY . /src/app/
 # RUN ls
-RUN pip install -r requirement.txt
+RUN pip install -r requirements.txt
 EXPOSE 5000
 ENTRYPOINT [ "python" ]
 CMD [ "app.py" ]
