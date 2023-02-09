@@ -9,6 +9,10 @@ jobs:
     executor: aws-cli/default
     steps:
       - checkout
+      - aws-cli/setup:
+          aws-access-key-id: ${ACCESS_KEY_ID}
+          aws-secret-access-key: ${SECRET_ACCESS_KEY}
+          configure-default-region: ${AWS_REGION}
       # - run: make ecr-login ECR_REPO=${ecr_login}
       - run: aws ecr get-login-password --region us-west-1 | docker login --username AWS --password-stdin 489994096722.dkr.ecr.us-west-1.amazonaws.com
     # aws-access-key-id: ${ACCESS_KEY_ID}
