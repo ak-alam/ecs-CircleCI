@@ -3,25 +3,23 @@ version: 2.1
 orbs:
   aws-ecr: circleci/aws-ecr@8.2.1
 
+jobs:
+  build_and_push:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - checkout
+      - run: make ecr-login ECR_REPO=${ECR_repository}
+    # aws-access-key-id: ${ACCESS_KEY_ID}
+    # aws-secret-access-key: ${SECRET_ACCESS_KEY}
+    # dockerfile: Dockerfile
+    # region: ${AWS_REGION}
+    # repo: ${ECR_repository}
+    # tag: 'latest, $CIRCLE_SHA1'
+
 workflows:
   my-workflow:
     jobs:
       - build_and_push:
           context:
             - test
-     
-
-  jobs:
-    build_and_push: 
-     # account-url: AWS_ECR_ACCOUNT_URL_ENV_VAR_NAME
-      aws-access-key-id: ${ACCESS_KEY_ID}
-      aws-secret-access-key: ${SECRET_ACCESS_KEY}
-      # context: myContext
-      # create-repo: true
-      dockerfile: Dockerfile
-      path: .
-      # profile-name: myProfileName
-      region: ${AWS_REGION}
-      repo: ${ECR_repository}
-      tag: 'latest, $CIRCLE_SHA1'
-    
