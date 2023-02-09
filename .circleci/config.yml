@@ -9,7 +9,7 @@ jobs:
       - image: cimg/base:stable
     steps:
       - checkout
-      - run: make ecr-login ECR_REPO=${ECR_repository}
+      - run: make ecr-login ECR_REPO=${ecr_login}
     # aws-access-key-id: ${ACCESS_KEY_ID}
     # aws-secret-access-key: ${SECRET_ACCESS_KEY}
     # dockerfile: Dockerfile
