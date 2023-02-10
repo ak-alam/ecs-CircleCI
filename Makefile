@@ -7,4 +7,4 @@ build-image:
 
 deploy-task:
 # aws ecs update-service --cluster ${CLUSTER_NAME} --service ${SERVICE_NAME} --force-new-deployment
-	ecs deploy --cluster ${CLUSTER_NAME} --service ${SERVICE_NAME} --tag ${IMAGE_TAG}
+	ecs deploy ${CLUSTER_NAME} ${SERVICE_NAME} --tag ${IMAGE_TAG}
