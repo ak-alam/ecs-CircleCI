@@ -41,11 +41,11 @@ jobs:
           name: Build & Push
           command: |
             make print
-            make build-image
-      - run:
-          name: Deploying
-          command: |
-            make deploy-task
+      #       make build-image
+      # - run:
+      #     name: Deploying
+      #     command: |
+      #       make deploy-task
               
               
         # make deploy-task CLUSTER_NAME=${CLUSTER_NAME} SERVICE_NAME=${SERVICE_NAME} IMAGE_TAG=${CIRCLE_SHA1}
