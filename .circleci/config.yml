@@ -40,6 +40,7 @@ jobs:
       - run:
           name: Build & Push
           command: |
+            make print
             make build-image
       - run:
           name: Deploying
