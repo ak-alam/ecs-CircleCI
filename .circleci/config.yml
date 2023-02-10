@@ -21,8 +21,9 @@ jobs:
       - run:
           name: Build & Push
           command: |
-# TAG=${CIRCLE_SHA1}
             make build-image ECR_REPO=${ECR_REPO_FLASK} IMAGE_TAG=${CIRCLE_SHA1}
+# TAG=${CIRCLE_SHA1}
+
 
       - run:
           name: Deploy To ECS using ecs deploy
