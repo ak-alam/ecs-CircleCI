@@ -43,11 +43,11 @@ jobs:
             export IMAGE_TAG=$(echo ${GITHUB_COMMIT_SHA:0:7})
             make build-image
 # make build-image ECR_REPO=${ECR_REPO_FLASK} IMAGE_TAG=${IMAGE_TAG}
-# - run:
-#     name: Deploy To ECS using ecs deploy
-#     command: |
-
-#       make deploy-task CLUSTER_NAME=${CLUSTER_NAME} SERVICE_NAME=${SERVICE_NAME} IMAGE_TAG=${CIRCLE_SHA1}
+      - run:
+          name: Deploying
+          command: |
+            make deploy-task
+        # make deploy-task CLUSTER_NAME=${CLUSTER_NAME} SERVICE_NAME=${SERVICE_NAME} IMAGE_TAG=${CIRCLE_SHA1}
 
       - notify_slack_error
       - notify_slack_pass
