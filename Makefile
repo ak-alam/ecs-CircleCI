@@ -2,8 +2,8 @@ ecr-login:
 	aws ecr get-login-password --region us-west-1 | docker login --username AWS --password-stdin ${ECR_REPO}
 build-image:
 	docker build -t ${ECR_REPO}:${IMAGE_TAG} .
-	docker push ${ECR_REPO}:${IMAGE_TAG}
-# docker tag ${ECR_REPO}:${IMAGE_TAG} ${ECR_REPO}:latest
+	docker tag ${ECR_REPO}:${IMAGE_TAG} ${ECR_REPO}:latest	
+	docker push -a ${ECR_REPO}
 # docker push -a ${ECR_REPO}
 
 #deploy-task:
