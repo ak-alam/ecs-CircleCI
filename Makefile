@@ -6,4 +6,5 @@ build-image:
 	docker push -a ${ECR_REPO}
 
 deploy-task:
-	aws ecs update-service --cluster ${CLUSTER_NAME} --service ${SERVICE_NAME} --force-new-deployment
+# aws ecs update-service --cluster ${CLUSTER_NAME} --service ${SERVICE_NAME} --force-new-deployment
+	ecs deploy --cluster ${CLUSTER_NAME} --service ${SERVICE_NAME} --tag ${IMAGE_TAG}

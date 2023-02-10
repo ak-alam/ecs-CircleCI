@@ -27,7 +27,8 @@ jobs:
       - run:
           name: Deploy To ECS using ecs deploy
           command: |
-            make deploy-task CLUSTER_NAME="circle_ci_flask" SERVICE_NAME=""flask-api
+            make deploy-task CLUSTER_NAME="circle_ci_flask" SERVICE_NAME="flask-api" IMAGE_TAG="latest"
+# make deploy-task CLUSTER_NAME="circle_ci_flask" SERVICE_NAME=""flask-api
             
 
 # curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
