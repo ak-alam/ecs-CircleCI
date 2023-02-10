@@ -46,10 +46,12 @@ jobs:
             export GITHUB_COMMIT_SHA=$(git rev-parse HEAD)
             export IMAGE_TAG=$(echo ${GITHUB_COMMIT_SHA:0:7})
             make build-image
-# - run:
-#     name: Deploying
-#     command: |
-#       make deploy-task IMAGE_TAG=${IMAGE_TAG}
+      - run:
+          name: Deploying
+          command: |
+            make deploy-task IMAGE_TAG=${IMAGE_TAG}
+              
+              
         # make deploy-task CLUSTER_NAME=${CLUSTER_NAME} SERVICE_NAME=${SERVICE_NAME} IMAGE_TAG=${CIRCLE_SHA1}
 
       - notify_slack_error
