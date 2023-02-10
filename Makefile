@@ -3,6 +3,7 @@ GITHUB_COMMIT_SHA := $(git rev-parse HEAD)
 IMAGE_TAG := $(echo ${GITHUB_COMMIT_SHA:0:7})
 
 print:
+	@echo "IMAGE_TAG: $(GITHUB_COMMIT_SHA)"
 	@echo "IMAGE_TAG: $(IMAGE_TAG)"
 
 
