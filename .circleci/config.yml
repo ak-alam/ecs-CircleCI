@@ -46,7 +46,7 @@ jobs:
       - run:
           name: Deploying
           command: |
-            make deploy-task IMAGE_TAG=${(IMAGE_TAG)}
+            make deploy-task IMAGE_TAG=$IMAGE_TAG
               
               
         # make deploy-task CLUSTER_NAME=${CLUSTER_NAME} SERVICE_NAME=${SERVICE_NAME} IMAGE_TAG=${CIRCLE_SHA1}
