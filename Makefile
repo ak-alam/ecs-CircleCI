@@ -1,3 +1,7 @@
+# IMAGE_TAG := $(CIRCLE_SHA1)
+GITHUB_COMMIT_SHA := $(git rev-parse HEAD)
+IMAGE_TAG := $(echo ${GITHUB_COMMIT_SHA:0:7})
+
 ecr-login:
 	aws ecr get-login-password --region us-west-1 | docker login --username AWS --password-stdin ${ECR_REPO}
 build-image:ecr-login
