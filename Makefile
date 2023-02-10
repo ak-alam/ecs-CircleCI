@@ -7,7 +7,7 @@ print:
 
 
 ecr-login:
-	aws ecr get-login-password --region us-west-1 | docker login --username AWS --password-stdin ${ECR_REPO}
+	aws ecr get-login-password --region us-west-1 | docker login --username AWS --password-stdin ${ECR_REPO_FLASK}
 
 build-image:ecr-login
 # docker build -t ${ECR_REPO}:${IMAGE_TAG} .
