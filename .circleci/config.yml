@@ -40,7 +40,10 @@ jobs:
       - run:
           name: Build & Push
           command: |
-            make print
+            GITHUB_COMMIT_SHA=$(git rev-parse HEAD)
+            IMAGE_TAG=$(echo ${GITHUB_COMMIT_SHA:0:7})
+            echo ${GITHUB_COMMIT_SHA}
+            echo ${IMAGE_TAG}
       #       make build-image
       # - run:
       #     name: Deploying
