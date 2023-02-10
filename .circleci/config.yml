@@ -39,9 +39,8 @@ jobs:
       - run:
           name: Build & Push
           command: |
-            echo $github.sh
-# export GITHUB_COMMIT_SHA=${github.sha}
-# export IMAGE_TAG=$(echo ${GITHUB_COMMIT_SHA:0:7})
+            export GITHUB_COMMIT_SHA=$(github_commit=${git rev-list -n 1 origin/main}
+            export IMAGE_TAG=$(echo ${GITHUB_COMMIT_SHA:0:7})
             
         # make build-image ECR_REPO=${ECR_REPO_FLASK} IMAGE_TAG=${IMAGE_TAG}
 # - run:
