@@ -28,7 +28,9 @@ jobs:
           name: Deploy To ECS using ecs deploy
           command: |
             pip install ecs-deploy
-            make deploy-task CLUSTER_NAME="flask-circleCI" SERVICE_NAME="flask-backend" IMAGE_TAG="latest"
+            make deploy-task CLUSTER_NAME="flask-circleCI" SERVICE_NAME="flask-backend" CONTAINER_NAME="circleCI_flask" ECR_REPO= ${ECR_REPO_FLASK} IMAGE_TAG=${TAG}
+
+# make deploy-task CLUSTER_NAME="flask-circleCI" SERVICE_NAME="flask-backend" IMAGE_TAG="latest"
 # make deploy-task CLUSTER_NAME="circle_ci_flask" SERVICE_NAME=""flask-api
             
 
