@@ -1,6 +1,6 @@
 # IMAGE_TAG := $(CIRCLE_SHA1)
-$(eval GITHUB_COMMIT_SHA=$(shell git rev-parse HEAD))
-$(eval IMAGE_TAG=$(shell echo $(GITHUB_COMMIT_SHA:0:7)))
+$(eval GITHUB_COMMIT_SHA=$(shell git rev-parse -short HEAD | cut ))
+# $(eval IMAGE_TAG=$(shell echo $(GITHUB_COMMIT_SHA:0:7)))
 print:
 	@echo "GITHUB_COMMIT_SHA: $(GITHUB_COMMIT_SHA)"
 	@echo "IMAGE_TAG: $(IMAGE_TAG)"
