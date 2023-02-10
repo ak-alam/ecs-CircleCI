@@ -24,11 +24,11 @@ jobs:
             TAG=0.1.$CIRCLE_BUILD_NUM
             make build-image ECR_REPO=${ECR_REPO_FLASK} IMAGE_TAG=${TAG}
 
-      - run:
-          name: Deploy To ECS using ecs deploy
-          command: |
-            pip install ecs-deploy
-            make deploy-task CLUSTER_NAME="circle_ci_flask" SERVICE_NAME="flask-api" IMAGE_TAG=${TAG}
+      # - run:
+      #     name: Deploy To ECS using ecs deploy
+      #     command: |
+      #       pip install ecs-deploy
+      #       make deploy-task CLUSTER_NAME="circle_ci_flask" SERVICE_NAME="flask-api" IMAGE_TAG="latest"
 # make deploy-task CLUSTER_NAME="circle_ci_flask" SERVICE_NAME=""flask-api
             
 
