@@ -29,6 +29,7 @@ jobs:
             aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
             aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
             aws configure set default.region $REGION
+            pip install ecs-deploy
 
 # - run:
 #     name: ECR Login
@@ -38,12 +39,14 @@ jobs:
       - run:
           name: Build & Push
           command: |
-            make build-image ECR_REPO=${ECR_REPO_FLASK} IMAGE_TAG=${CIRCLE_SHA1}
-      - run:
-          name: Deploy To ECS using ecs deploy
-          command: |
-            pip install ecs-deploy
-            make deploy-task CLUSTER_NAME=${CLUSTER_NAME} SERVICE_NAME=${SERVICE_NAME} IMAGE_TAG=${CIRCLE_SHA1}
+            export GITHUB_COMMIT_SHA=${{ github.sha }}
+            export IMAGE_TAG=$(echo ${GITHUB_COMMIT_SHA:0:7})
+            make build-image ECR_REPO=${ECR_REPO_FLASK} IMAGE_TAG=${IMAGE_TAG}
+# - run:
+#     name: Deploy To ECS using ecs deploy
+#     command: |
+
+#       make deploy-task CLUSTER_NAME=${CLUSTER_NAME} SERVICE_NAME=${SERVICE_NAME} IMAGE_TAG=${CIRCLE_SHA1}
 
       - notify_slack_error
       - notify_slack_pass
