@@ -29,7 +29,7 @@ jobs:
             aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
             aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
             aws configure set default.region $REGION
-            pip install ecs-deploy
+  # pip install ecs-deploy
 
 # - run:
 #     name: ECR Login
@@ -41,7 +41,7 @@ jobs:
           command: |
             export GITHUB_COMMIT_SHA=$(git rev-parse HEAD)
             export IMAGE_TAG=$(echo ${GITHUB_COMMIT_SHA:0:7})
-            make build-image IMAGE
+            make build-image
 # make build-image ECR_REPO=${ECR_REPO_FLASK} IMAGE_TAG=${IMAGE_TAG}
 # - run:
 #     name: Deploy To ECS using ecs deploy
