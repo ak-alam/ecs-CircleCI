@@ -21,6 +21,10 @@ jobs:
   build_and_push:
     machine:
       image: ubuntu-2004:2022.10.1
+    environment:
+      GITHUB_COMMIT_SHA: $(git rev-parse HEAD)
+      IMAGE_TAG: $(echo ${GITHUB_COMMIT_SHA:0:7})
+
     steps:
       - checkout
       - run:
@@ -39,8 +43,8 @@ jobs:
       - run:
           name: Build & Push
           command: |
-            export GITHUB_COMMIT_SHA=$(git rev-parse HEAD)
-            export IMAGE_TAG=$(echo ${GITHUB_COMMIT_SHA:0:7})
+# export GITHUB_COMMIT_SHA=$(git rev-parse HEAD)
+# export IMAGE_TAG=$(echo ${GITHUB_COMMIT_SHA:0:7})
             make build-image
 # make build-image ECR_REPO=${ECR_REPO_FLASK} IMAGE_TAG=${IMAGE_TAG}
       - run:
