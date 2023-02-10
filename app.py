@@ -8,7 +8,7 @@ def welcome():
     
 @app.route('/hello', methods=['GET', 'POST'])
 def hello_world():
-    return "I'm CIRCLE CI"
+    return "I'm CIRCLE CI Testing"
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)

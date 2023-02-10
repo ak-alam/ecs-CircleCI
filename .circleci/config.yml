@@ -23,7 +23,11 @@ jobs:
           command: |
             TAG=0.1.$CIRCLE_BUILD_NUM
             make build-image ECR_REPO=${ECR_REPO_FLASK} IMAGE_TAG=${TAG}
-            docker images
+
+      - run:
+          name: Deploy To ECS using ecs deploy
+          command: |
+            make deploy-task CLUSTER_NAME="circle_ci_flask" SERVICE_NAME=""flask-api
             
 
 # curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
