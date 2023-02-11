@@ -27,7 +27,10 @@ jobs:
       - checkout
       - aws-cli/setup:
           profile-name: default
-
+      - run:
+          name: Install dependencies
+          command: |
+            pip install ecs-deploy
       - run:
           name: Build & Push
           command: |
