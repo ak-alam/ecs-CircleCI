@@ -39,16 +39,9 @@ jobs:
           name: Deploying
           command: |
             make deploy-task
-              
-              
-        # make deploy-task CLUSTER_NAME=${CLUSTER_NAME} SERVICE_NAME=${SERVICE_NAME} IMAGE_TAG=${CIRCLE_SHA1}
 
       - notify_slack_error
       - notify_slack_pass
-# make deploy-task CLUSTER_NAME="flask-circleCI" SERVICE_NAME="flask-backend" CONTAINER_NAME="circleCI_flask" ECR_REPO= ${ECR_REPO_FLASK} IMAGE_TAG=${TAG}
-
-
-# make deploy-task CLUSTER_NAME="circle_ci_flask" SERVICE_NAME=""flask-api
             
 workflows:
   my-workflow:
