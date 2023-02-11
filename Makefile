@@ -11,8 +11,9 @@ ecr-login:
 
 build-image:ecr-login
 # docker build -t ${ECR_REPO}:${IMAGE_TAG} .
-	docker build -t ${ECR_REPO_FLASK}:${IMAGE_TAG} .
-# docker tag ${ECR_REPO}:${IMAGE_TAG} ${ECR_REPO}:latest	
+	docker build -t circle_ci_test .
+# docker build -t ${ECR_REPO_FLASK}:${IMAGE_TAG} .
+	docker tag circle_ci_test:latest ${ECR_REPO}:${IMAGE_TAG}
 	docker push ${ECR_REPO_FLASK}:${IMAGE_TAG}
 
 deploy-task:
